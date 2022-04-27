@@ -1,0 +1,21 @@
+Okay, all the possible combinations of things are the following.
+
+
+Guest changes:
+    - PV, HVM, PVH
+    - Hardware assisted paging (on/off)
+    - Taskset within benchmark (on/off)
+    - Guest pinning in config file (on/off)
+
+Host changes (will need manual intervention):
+    - TIMER_SLOP (default/lower)
+    - NULL_SCHEDULER for guests
+    - Dom0 pinned to its own cores
+    - Hyperthreading (on/off)
+
+Misc:
+    - Will need to consider overcommit! Last time I tried it some of the VMs wouldn't even boot
+    - 3*2*2*2 = 24 benchmark runs per host change
+    - Will probably pin Dom0 to 8 cores? Will have to be 11VM instead of 13VM.
+    - Can't do NULL_SCHEDULER at the same time as guest pinning
+

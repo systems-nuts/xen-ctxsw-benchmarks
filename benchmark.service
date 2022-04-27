@@ -1,0 +1,12 @@
+
+[Unit]
+Description=Benchmark Autorun
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStartPre=rsync -a guest-rsync@xone:guest-benchmarks/ /guest-benchmarks/
+ExecStart=/guest-benchmarks/guest.py
+
+[Install]
+WantedBy=multi-user.target
